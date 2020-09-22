@@ -1,0 +1,25 @@
+{
+  "name": "hacker-news-clone-graphql-server",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "scripts": {
+    "build": "webpack"
+  },
+  "keywords": [
+    "node",
+    "graphql"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "graphql-yoga": "^1.18.3"
+  },
+  "devDependencies": {
+    "eslint": "^7.9.0",
+    "eslint-config-prettier": "^6.11.0",
+    "prettier": "2.1.2",
+    "webpack": "^4.44.2",
+    "webpack-cli": "^3.3.12"
+  }
+}
