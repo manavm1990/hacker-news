@@ -4,7 +4,9 @@
   "description": "",
   "private": true,
   "scripts": {
-    "build": "webpack"
+    "build": "webpack",
+    "serve": "nodemon dist/main.js",
+    "watch": "webpack --watch"
   },
   "keywords": [
     "node",
@@ -18,6 +20,7 @@
   "devDependencies": {
     "eslint": "^7.9.0",
     "eslint-config-prettier": "^6.11.0",
+    "nodemon": "^2.0.4",
     "prettier": "2.1.2",
     "webpack": "^4.44.2",
     "webpack-cli": "^3.3.12"
