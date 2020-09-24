@@ -1,19 +1,5 @@
 import { GraphQLServer } from "graphql-yoga";
 
-// Schema def
-const typeDefs = `
-  type Query {
-    info: String!
-    feed: [Link!]!
-  }
-
-  type Link {
-    id: ID!
-    description: String!
-    url: String!
-  }
-`;
-
 // Schema implementation
 // The appropriate 'resolvers' are invoked based on the incoming 'query object properties'
 const resolvers = {
@@ -22,10 +8,12 @@ const resolvers = {
     info: () => "Test API Route",
     feed: () => links,
   },
+
+  Mutation: {},
 };
 
 const server = new GraphQLServer({
-  typeDefs,
+  typeDefs: "./src/schema.graphql",
   resolvers,
 });
 
