@@ -15,17 +15,12 @@ const typeDefs = `
 `;
 
 // Schema implementation
+// The appropriate 'resolvers' are invoked based on the incoming 'query object properties'
 const resolvers = {
   Query: {
     // names must match names from 'Query' SDL 👆🏽
     info: () => "Test API Route",
     feed: () => links,
-  },
-
-  Link: {
-    id: ({ id }) => id,
-    description: ({ description }) => description,
-    url: ({ url }) => url,
   },
 };
 
