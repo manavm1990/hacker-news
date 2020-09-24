@@ -1,5 +1,7 @@
 import { GraphQLServer } from "graphql-yoga";
 
+import feedQuery from "./feed.graphql";
+
 // Schema implementation
 // The appropriate 'resolvers' are invoked based on the incoming 'query object properties'
 const resolvers = {
@@ -13,7 +15,7 @@ const resolvers = {
 };
 
 const server = new GraphQLServer({
-  typeDefs: "./src/schema.graphql",
+  typeDefs: feedQuery,
   resolvers,
 });
 
