@@ -1,5 +1,5 @@
 // Dummy Data
-let links = [
+const links = [
   {
     id: "link-0",
     url: "www.howtographql.com",
