@@ -7,6 +7,7 @@ let links = [
   },
 ];
 
+// Each 'resolver' 'backs' a 'typedef'
 export default {
   Query: {
     // names must match names from 'Query' SDL 👆🏽

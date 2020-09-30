@@ -1,3 +1,4 @@
+# The 'contract' for client-server communication 💬
 type Query {
   info: String!
   feed: [Link!]!
