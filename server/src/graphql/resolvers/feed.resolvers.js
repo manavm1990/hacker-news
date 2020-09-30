@@ -11,6 +11,7 @@ const links = [
 export default {
   Query: {
     feed: () => links,
+    link: (_, args) => links.find(({ id }) => id === args.id),
   },
 
   Mutation: {

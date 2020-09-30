@@ -1,6 +1,7 @@
 # The 'contract' for client-server communication 💬
 type Query {
   feed: [Link!]!
+  link(id: ID!): Link
 }
 
 type Mutation {
