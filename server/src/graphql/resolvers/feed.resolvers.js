@@ -13,5 +13,11 @@ export default {
     feed: () => links,
   },
 
-  Mutation: {},
+  Mutation: {
+    post: (parent, { id = `link-${links.length}`, description, url }) => {
+      const newLink = { id, description, url };
+      links.push(newLink);
+      return newLink;
+    },
+  },
 };
