@@ -20,5 +20,15 @@ export default {
       links.push(newLink);
       return newLink;
     },
+    update: (_, args) => {
+      // TODO: 'handle error 🥅' if 'id' is not there.
+      const linkIndex = links.findIndex(({ id }) => id === args.id);
+      links[linkIndex] = {
+        ...links[linkIndex],
+        ...args,
+      };
+
+      return links[linkIndex];
+    },
   },
 };
