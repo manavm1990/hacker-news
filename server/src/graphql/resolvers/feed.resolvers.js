@@ -30,5 +30,10 @@ export default {
 
       return links[linkIndex];
     },
+    delete: (_, args) =>
+      links.splice(
+        links.findIndex(({ id }) => id === args.id),
+        1
+      )[0],
   },
 };
