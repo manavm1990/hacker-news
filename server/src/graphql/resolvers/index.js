@@ -1,6 +1,6 @@
 import { mergeResolvers } from "@graphql-tools/merge";
 
-import feedResolver from "./feed.resolvers.js";
+import feedResolver from "./feed.resolvers";
 
 const resolvers = mergeResolvers([feedResolver]);
 
