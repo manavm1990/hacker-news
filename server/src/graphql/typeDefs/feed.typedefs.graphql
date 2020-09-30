@@ -1,6 +1,9 @@
 # The 'contract' for client-server communication 💬
 type Query {
+  # Fetch all links
   feed: [Link!]!
+
+  # Fetch a single link by its `id`
   link(id: ID!): Link
 }
 
