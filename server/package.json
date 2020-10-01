@@ -1,7 +1,7 @@
 {
   "name": "hacker-news-clone-graphql-server",
   "version": "1.0.0",
-  "description": "",
+  "description": "Hacker News Clone with help of Prisma",
   "private": true,
   "scripts": {
     "build": "webpack",
