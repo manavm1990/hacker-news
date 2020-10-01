@@ -10,5 +10,6 @@ module.exports = {
   },
   rules: {
     "import/no-unresolved": 0,
+    "no-unused-vars": 1,
   },
 };
