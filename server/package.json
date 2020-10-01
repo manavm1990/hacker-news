@@ -17,6 +17,7 @@
   "dependencies": {
     "@graphql-tools/load-files": "^6.2.3",
     "@graphql-tools/merge": "^6.2.3",
+    "@prisma/client": "^2.8.0",
     "graphql": "^15.3.0",
     "graphql-yoga": "^1.18.3"
   },
@@ -25,6 +26,7 @@
     "@babel/preset-env": "^7.11.5",
     "@prisma/cli": "^2.8.0",
     "babel-loader": "^8.1.0",
+    "copy-webpack-plugin": "^6.1.1",
     "eslint": "^7.10.0",
     "eslint-config-airbnb-base": "^14.2.0",
     "eslint-config-prettier": "^6.11.0",
