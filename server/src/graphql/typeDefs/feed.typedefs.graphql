@@ -1,20 +1,22 @@
 # The 'contract' for client-server communication 💬
 type Query {
+  info: String!
+
   # Fetch all
   feed: [Link!]!
 
   # Fetch a single link by its `id`
-  link(id: ID!): Link
+  link(id: Int!): Link
 }
 
 type Mutation {
   post(url: String!, description: String!): Link!
-  update(id: ID!, url: String, description: String): Link
-  delete(id: ID!): Link
+  update(id: Int!, url: String, description: String): Link
+  delete(id: Int!): Link
 }
 
 type Link {
-  id: ID!
+  id: Int!
   description: String!
   url: String!
 }
