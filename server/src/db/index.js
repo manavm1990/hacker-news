@@ -10,5 +10,5 @@ const prisma = new PrismaClient();
     throw e;
   })
   .finally(async () => {
-    await prisma.disconnect();
+    await prisma.$disconnect();
   });
