@@ -1,10 +1,9 @@
+const nodeExternals = require("webpack-node-externals");
+
 module.exports = {
   mode: "development",
   target: "node",
-  node: {
-    __dirname: true,
-    __filename: true,
-  },
+  externals: [nodeExternals()],
   module: {
     rules: [
       { test: /\.graphql?$/, loader: "webpack-graphql-loader" },
