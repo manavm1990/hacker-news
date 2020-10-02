@@ -1,7 +1,8 @@
+import path from "path";
+
+import { loadFilesSync } from "@graphql-tools/load-files";
 import { mergeTypeDefs } from "@graphql-tools/merge";
 
-import feedType from "./feed.typeDefs.graphql";
-
-const typeDefs = mergeTypeDefs([feedType]);
-
-export default typeDefs;
+export default mergeTypeDefs(
+  loadFilesSync(path.join(__dirname), { extensions: ["graphql"] })
+);
