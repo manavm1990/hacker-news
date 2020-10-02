@@ -1,0 +1,21 @@
+type Query {
+  login(email: String!, password: String!): AuthPayload
+}
+
+type Mutation {
+  signup(email: String!, password: String!): AuthPayload
+}
+
+type AuthPayload {
+  token: String
+  user: User
+}
+
+type User {
+  id: ID!
+  name: String!
+  email: String!
+
+  # TODO: Should Link be required? 🤔
+  links: [Link!]!
+}
