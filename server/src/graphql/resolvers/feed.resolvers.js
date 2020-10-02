@@ -1,6 +1,5 @@
 export default {
   Query: {
-    info: () => "Hacker News Clone GraphQL API",
     feed: async (_, __, { prisma }) => prisma.link.findMany(),
     link: async (_, { id }, { prisma }) =>
       prisma.link.findOne({ where: { id } }),
