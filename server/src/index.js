@@ -9,10 +9,13 @@ const server = new GraphQLServer({
   typeDefs,
   resolvers,
 
-  // Give 'resolvers' access to 'constext.prisma'
-  context: {
-    prisma,
-  },
+  // 'resolvers' can get access to 'context
+  context:
+    // 'resolvers' can read 'Authorization' header for user validation
+    (request) => ({
+      ...request,
+      prisma,
+    }),
 });
 
 server.start(() => {
