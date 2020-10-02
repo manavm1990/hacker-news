@@ -1,4 +1,4 @@
-export default {
+module.exports = {
   Query: {
     feed: async (_, __, { prisma }) => prisma.link.findMany(),
     link: async (_, { id }, { prisma }) =>
