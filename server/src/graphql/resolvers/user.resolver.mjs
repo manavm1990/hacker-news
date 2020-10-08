@@ -6,9 +6,9 @@ dotenv.config();
 
 export default {
   Query: {
-    login: async (_, { email, password }, { prisma }) => {
-      const user = await prisma.user.findOne({ where: { email } });
-      if (!user) {
+    login: async (_, { email, password }, { prisma: user }) => {
+      const foundUser = await user.findOne({ where: { email } });
+      if (!foundUser) {
         throw new Error("🙅🏽‍♂️ No such user found!");
       }
 
@@ -19,17 +19,25 @@ export default {
 
       const token = jwt.sign({ userId: user.id }, process.env.APP_SECRET);
 
-      return { token, user };
+      return { token, foundUser };
     },
   },
 
   Mutation: {
-    signup: async (_, args, { prisma }) => {
-      const hashedPass = await bcrypt.hash(args.password, 10);
-      const newUser = prisma.user.create({ data: { ...args, hashedPass } });
+    signup: async (_, args, { prisma: { user } }) => {
+      const password = await bcrypt.hash(args.password, 10);
+      const newUser = await user.create({
+        data: { ...args, password },
+      });
+
       const token = jwt.sign({ userId: newUser.id }, process.env.APP_SECRET);
 
-      return { token, newUser };
+      return { token, user: newUser };
     },
+  },
+
+  User: {
+    userFeed: (parent, _, { prisma }) =>
+      prisma.user.findOne({ where: { id: parent.id } }).userFeed(),
   },
 };
