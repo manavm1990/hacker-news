@@ -12,12 +12,12 @@ export default {
         throw new Error("🙅🏽‍♂️ No such user found!");
       }
 
-      const validated = await bcrypt.compare(password, user.password);
+      const validated = await bcrypt.compare(password, foundUser.password);
       if (!validated) {
         throw new Error("🙅🏽‍♂️ Invalid password!");
       }
 
-      const token = jwt.sign({ userId: user.id }, process.env.APP_SECRET);
+      const token = jwt.sign({ userId: foundUser.id }, process.env.APP_SECRET);
 
       return { token, foundUser };
     },
