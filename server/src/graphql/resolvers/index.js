@@ -1,10 +1,8 @@
-import path from "path";
-
-import { loadFilesSync } from "@graphql-tools/load-files";
 import { mergeResolvers } from "@graphql-tools/merge";
 
-const resolvers = mergeResolvers(
-  loadFilesSync(path.join(__dirname), { extensions: ["mjs"] })
-);
+// TODO: Figure out how to use 'loadFilesSync'
+import feedResolver from "./feed.resolver";
+import infoResolver from "./info.resolver";
+import usersResolver from "./users.resolver";
 
-export default resolvers;
+export default mergeResolvers([feedResolver, infoResolver, usersResolver]);
