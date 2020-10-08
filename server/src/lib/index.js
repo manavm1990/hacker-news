@@ -1,9 +1,11 @@
 import dotenv from "dotenv";
 import jwt from "jsonwebtoken";
 
-export const getCurrentUser = (request) => {
-  dotenv.config();
+dotenv.config();
 
+// Will be used by any 'resolver' that requires authentication
+export const getCurrentUserId = (request) => {
+  // 'auth' contains "User JWT"
   const auth = request.get("Authorization");
 
   if (!auth) {
@@ -11,5 +13,7 @@ export const getCurrentUser = (request) => {
   }
 
   const token = auth.replace("Bearer ", "");
+
+  // returns 'userId' from JWT
   return jwt.verify(token, process.env.APP_SECRET);
 };
