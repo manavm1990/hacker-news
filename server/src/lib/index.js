@@ -14,6 +14,7 @@ export const getCurrentUserId = (request) => {
 
   const token = auth.replace("Bearer ", "");
 
-  // returns 'userId' from JWT
-  return jwt.verify(token, process.env.APP_SECRET);
+  const { userId } = jwt.verify(token, process.env.APP_SECRET);
+
+  return userId;
 };
