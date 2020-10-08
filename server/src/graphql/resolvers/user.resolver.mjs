@@ -6,7 +6,7 @@ dotenv.config();
 
 export default {
   Query: {
-    login: async (_, { email, password }, { prisma: user }) => {
+    login: async (_, { email, password }, { prisma: { user } }) => {
       const foundUser = await user.findOne({ where: { email } });
       if (!foundUser) {
         throw new Error("🙅🏽‍♂️ No such user found!");
