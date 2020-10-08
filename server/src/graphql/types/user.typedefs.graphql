@@ -3,7 +3,7 @@ type Query {
 }
 
 type Mutation {
-  signup(email: String!, password: String!): AuthPayload
+  signup(name: String!, email: String!, password: String!): AuthPayload!
 }
 
 type AuthPayload {
@@ -15,7 +15,5 @@ type User {
   id: ID!
   name: String!
   email: String!
-
-  # TODO: Should Link be required? 🤔
-  links: [Link!]!
+  userFeed: [Link]!
 }
