@@ -19,7 +19,7 @@ export default {
 
       const token = jwt.sign({ userId: foundUser.id }, process.env.APP_SECRET);
 
-      return { token, foundUser };
+      return { token, user: foundUser };
     },
   },
 
