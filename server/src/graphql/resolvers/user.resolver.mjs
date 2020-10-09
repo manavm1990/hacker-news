@@ -41,7 +41,7 @@ export default {
   },
 
   User: {
-    userFeed: (parent, _, { prisma }) =>
-      prisma.user.findOne({ where: { id: parent.id } }).userFeed(),
+    userFeed: (parent, _, { prisma: { user } }) =>
+      user.findOne({ where: { id: parent.id } }).userFeed(),
   },
 };
