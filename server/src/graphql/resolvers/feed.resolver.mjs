@@ -8,14 +8,23 @@ export default {
   },
 
   Mutation: {
-    post: async (_, { url, description }, { request, prisma: { link } }) =>
-      link.create({
+    post: async (
+      _,
+      { url, description },
+      { request, prisma: { link }, pubSub }
+    ) => {
+      const newLink = link.create({
         data: {
           url,
           description,
           postedBy: { connect: { id: getCurrentUserId(request) } },
         },
-      }),
+      });
+
+      pubSub.publish("NEW_LINK", newLink);
+
+      return newLink;
+    },
     update: async (_, { id, description, url }, { prisma: { link } }) =>
       link.update({ data: { description, url }, where: { id } }),
     delete: async (_, { id }, { prisma: { link } }) =>
