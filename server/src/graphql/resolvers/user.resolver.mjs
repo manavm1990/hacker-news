@@ -4,22 +4,26 @@ import jwt from "jsonwebtoken";
 
 dotenv.config();
 
+async function validateUser(prismaUser, email, pass) {
+  const foundUser = await prismaUser.findOne({ where: { email } });
+  if (!foundUser) {
+    throw new Error("🙅🏽‍♂️ No such user found!");
+  }
+
+  const validated = await bcrypt.compare(pass, foundUser.password);
+  if (!validated) {
+    throw new Error("🙅🏽‍♂️ Invalid password!");
+  }
+  return foundUser;
+}
+
 export default {
   Query: {
-    login: async (_, { email, password }, { prisma: { user } }) => {
-      const foundUser = await user.findOne({ where: { email } });
-      if (!foundUser) {
-        throw new Error("🙅🏽‍♂️ No such user found!");
-      }
+    login: (_, { email, password }, { prisma: { user } }) => {
+      const validUser = validateUser(user, email, password);
+      const token = jwt.sign({ userId: validUser.id }, process.env.APP_SECRET);
 
-      const validated = await bcrypt.compare(password, foundUser.password);
-      if (!validated) {
-        throw new Error("🙅🏽‍♂️ Invalid password!");
-      }
-
-      const token = jwt.sign({ userId: foundUser.id }, process.env.APP_SECRET);
-
-      return { token, user: foundUser };
+      return { token, user: validUser };
     },
   },
 
