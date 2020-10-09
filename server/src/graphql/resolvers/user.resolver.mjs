@@ -14,13 +14,14 @@ async function validateUser(prismaUser, email, pass) {
   if (!validated) {
     throw new Error("🙅🏽‍♂️ Invalid password!");
   }
+
   return foundUser;
 }
 
 export default {
   Query: {
-    login: (_, { email, password }, { prisma: { user } }) => {
-      const validUser = validateUser(user, email, password);
+    login: async (_, { email, password }, { prisma: { user } }) => {
+      const validUser = await validateUser(user, email, password);
       const token = jwt.sign({ userId: validUser.id }, process.env.APP_SECRET);
 
       return { token, user: validUser };
