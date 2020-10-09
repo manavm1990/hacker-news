@@ -42,5 +42,8 @@
   },
   "prisma": {
     "schema": "src/prisma/schema.prisma"
+  },
+  "resolutions": {
+    "graphql": "^15.3.0"
   }
 }
