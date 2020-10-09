@@ -1,9 +1,10 @@
-import { GraphQLServer } from "graphql-yoga";
+import { GraphQLServer, PubSub } from "graphql-yoga";
 import { PrismaClient } from "@prisma/client";
 
 import { typeDefs, resolvers } from "./graphql";
 
 const prisma = new PrismaClient();
+const pubSub = new PubSub();
 
 const server = new GraphQLServer({
   typeDefs,
@@ -15,6 +16,7 @@ const server = new GraphQLServer({
     (request) => ({
       ...request,
       prisma,
+      pubSub,
     }),
 });
 
