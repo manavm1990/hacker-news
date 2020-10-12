@@ -1,10 +1,7 @@
 # The 'contract' for client-server communication 💬
 type Query {
-  # Fetch all - 'returns' a non-empty Array of Links
-  feed: [Link!]!
-
-  # Fetch a single link by its `id`
   link(id: Int!): Link
+  links: [Link!]!
 }
 
 type Mutation {

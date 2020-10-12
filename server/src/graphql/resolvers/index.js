@@ -1,7 +1,12 @@
 import { mergeResolvers } from "@graphql-tools/merge";
 
-import feedResolver from "./feed.resolver";
-import infoResolver from "./info.resolver";
-import usersResolver from "./user.resolver";
+/**
+ * ⚠️ RE: 'loadFilesSync'
+ * Only these values are supported now. 'ts', 'js', 'gql', 'graphql', 'graphqls'
+ * https://www.graphql-tools.com/docs/merge-resolvers
+ */
+import linkResolver from "./link.resolvers";
+import testResolver from "./test.resolvers";
+import usersResolver from "./user.resolvers";
 
-export default mergeResolvers([feedResolver, infoResolver, usersResolver]);
+export default mergeResolvers([linkResolver, testResolver, usersResolver]);

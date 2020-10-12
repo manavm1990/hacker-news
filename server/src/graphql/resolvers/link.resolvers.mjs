@@ -2,9 +2,9 @@ import { getCurrentUserId } from "lib";
 
 export default {
   Query: {
-    feed: async (_, __, { prisma: { link } }) => link.findMany(),
     link: async (_, { id }, { prisma: { link } }) =>
       link.findOne({ where: { id } }),
+    links: async (_, __, { prisma: { link } }) => link.findMany(),
   },
 
   Mutation: {
